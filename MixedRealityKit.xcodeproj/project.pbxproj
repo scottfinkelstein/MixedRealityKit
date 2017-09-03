@@ -12,6 +12,8 @@
 		D283909D1F5B5B9B00A5E461 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D283909B1F5B5B9B00A5E461 /* Main.storyboard */; };
 		D283909F1F5B5B9B00A5E461 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D283909E1F5B5B9B00A5E461 /* Assets.xcassets */; };
 		D28390A21F5B5B9B00A5E461 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D28390A01F5B5B9B00A5E461 /* LaunchScreen.storyboard */; };
+		D28390AB1F5B5BDA00A5E461 /* MixedRealityKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28390AA1F5B5BD500A5E461 /* MixedRealityKit.swift */; };
+		D28390AD1F5B5BEB00A5E461 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = D28390AC1F5B5BE900A5E461 /* art.scnassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,9 @@
 		D283909E1F5B5B9B00A5E461 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D28390A11F5B5B9B00A5E461 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D28390A31F5B5B9B00A5E461 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D28390AA1F5B5BD500A5E461 /* MixedRealityKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixedRealityKit.swift; sourceTree = "<group>"; };
+		D28390AC1F5B5BE900A5E461 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
+		D28390AE1F5B5CF500A5E461 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +45,7 @@
 			children = (
 				D28390961F5B5B9B00A5E461 /* MixedRealityKit */,
 				D28390951F5B5B9B00A5E461 /* Products */,
+				D28390AE1F5B5CF500A5E461 /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +60,24 @@
 		D28390961F5B5B9B00A5E461 /* MixedRealityKit */ = {
 			isa = PBXGroup;
 			children = (
+				D28390A91F5B5BC400A5E461 /* Source */,
 				D28390971F5B5B9B00A5E461 /* AppDelegate.swift */,
 				D28390991F5B5B9B00A5E461 /* ViewController.swift */,
 				D283909B1F5B5B9B00A5E461 /* Main.storyboard */,
 				D283909E1F5B5B9B00A5E461 /* Assets.xcassets */,
+				D28390AC1F5B5BE900A5E461 /* art.scnassets */,
 				D28390A01F5B5B9B00A5E461 /* LaunchScreen.storyboard */,
 				D28390A31F5B5B9B00A5E461 /* Info.plist */,
 			);
 			path = MixedRealityKit;
+			sourceTree = "<group>";
+		};
+		D28390A91F5B5BC400A5E461 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				D28390AA1F5B5BD500A5E461 /* MixedRealityKit.swift */,
+			);
+			path = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -123,6 +139,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D28390A21F5B5B9B00A5E461 /* LaunchScreen.storyboard in Resources */,
+				D28390AD1F5B5BEB00A5E461 /* art.scnassets in Resources */,
 				D283909F1F5B5B9B00A5E461 /* Assets.xcassets in Resources */,
 				D283909D1F5B5B9B00A5E461 /* Main.storyboard in Resources */,
 			);
@@ -137,6 +154,7 @@
 			files = (
 				D283909A1F5B5B9B00A5E461 /* ViewController.swift in Sources */,
 				D28390981F5B5B9B00A5E461 /* AppDelegate.swift in Sources */,
+				D28390AB1F5B5BDA00A5E461 /* MixedRealityKit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
