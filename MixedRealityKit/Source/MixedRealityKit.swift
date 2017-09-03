@@ -10,10 +10,26 @@ import UIKit
 import SceneKit
 import ARKit
 
+public protocol MixedRealityDelegate: class {
+    func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval)
+    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor)
+    func renderer(_ renderer: SCNSceneRenderer, willUpdate node: SCNNode, for anchor: ARAnchor)
+    func renderer(_ renderer: SCNSceneRenderer, didRemove node: SCNNode, for anchor: ARAnchor)
+}
+
+extension MixedRealityDelegate {
+    func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) { }
+    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) { }
+    func renderer(_ renderer: SCNSceneRenderer, willUpdate node: SCNNode, for anchor: ARAnchor) { }
+    func renderer(_ renderer: SCNSceneRenderer, didRemove node: SCNNode, for anchor: ARAnchor) { }
+}
+
 public class MixedRealityKit: ARSCNView, ARSessionDelegate, ARSCNViewDelegate {
     
     private var cameraTransform:matrix_float4x4?
     private var cameraNode:SCNNode?
+    
+    public weak var mixedRealityDelegate:MixedRealityDelegate?
     
     public var disableSleepMode:Bool = true {
         willSet(newValue) {
@@ -46,14 +62,20 @@ public class MixedRealityKit: ARSCNView, ARSessionDelegate, ARSCNViewDelegate {
         showsStatistics = true
     }
     
-    public func runSession() {
+    public func runSession(detectPlanes: Bool) {
         // Create a session configuration
         let configuration = ARWorldTrackingConfiguration()
         
-        configuration.planeDetection = .horizontal
+        if detectPlanes == true {
+            configuration.planeDetection = .horizontal
+        }
         
         // Run the view's session
         session.run(configuration)
+    }
+    
+    public func runSession() {
+        runSession(detectPlanes: false)
     }
     
     public func pauseSession() {
@@ -126,5 +148,26 @@ public class MixedRealityKit: ARSCNView, ARSessionDelegate, ARSCNViewDelegate {
         // Reset tracking and/or remove existing anchors if consistent tracking is required
         
     }
+    
 
+    public func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
+        guard let mixedRealityDelegate = mixedRealityDelegate else { return }
+        mixedRealityDelegate.renderer(renderer, updateAtTime: time)
+    }
+    
+    public func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+        guard let mixedRealityDelegate = mixedRealityDelegate else { return }
+        mixedRealityDelegate.renderer(renderer, didAdd: node, for: anchor)
+    }
+    
+    public func renderer(_ renderer: SCNSceneRenderer, willUpdate node: SCNNode, for anchor: ARAnchor) {
+        guard let mixedRealityDelegate = mixedRealityDelegate else { return }
+        mixedRealityDelegate.renderer(renderer, willUpdate: node, for: anchor)
+    }
+    
+    public func renderer(_ renderer: SCNSceneRenderer, didRemove node: SCNNode, for anchor: ARAnchor) {
+        guard let mixedRealityDelegate = mixedRealityDelegate else { return }
+        mixedRealityDelegate.renderer(renderer, didRemove: node, for: anchor)
+    }
+    
 }

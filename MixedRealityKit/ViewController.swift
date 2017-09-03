@@ -8,8 +8,9 @@
 
 import UIKit
 import SceneKit
+import ARKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, MixedRealityDelegate {
 
     var sceneView:MixedRealityKit?
     
@@ -18,6 +19,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         sceneView=MixedRealityKit(frame: view.frame)
+        sceneView?.mixedRealityDelegate = self
         
         let scene=SCNScene(named: "art.scnassets/Room.scn")!
         sceneView?.scene=scene
@@ -40,6 +42,22 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    // MixedReality Delegates
+    func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
+       
+    }
+    
+    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+        
+    }
+    
+    func renderer(_ renderer: SCNSceneRenderer, willUpdate node: SCNNode, for anchor: ARAnchor) {
+        
+    }
+    
+    func renderer(_ renderer: SCNSceneRenderer, didRemove node: SCNNode, for anchor: ARAnchor) {
+        
+    }
 
 }
 

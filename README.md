@@ -35,7 +35,7 @@ import UIKit
 import SceneKit
 import MixedRealityKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, MixedRealityDelegate {
 
     var sceneView:MixedRealityKit?
 
@@ -44,7 +44,9 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
 
         sceneView=MixedRealityKit(frame: view.frame)
-        let scene=SCNScene()
+        sceneView?.mixedRealityDelegate = self
+
+        let scene=SCNScene(named: "art.scnassets/Room.scn")!
         sceneView?.scene=scene
 
         view.addSubview(sceneView!)
@@ -52,7 +54,7 @@ class ViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        sceneView?.runSession()
+        sceneView?.runSession(detectPlanes: true)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -65,6 +67,22 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    // MixedReality Delegates
+    func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
+
+    }
+
+    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+
+    }
+
+    func renderer(_ renderer: SCNSceneRenderer, willUpdate node: SCNNode, for anchor: ARAnchor) {
+
+    }
+
+    func renderer(_ renderer: SCNSceneRenderer, didRemove node: SCNNode, for anchor: ARAnchor) {
+
+    }
 
 }
 
@@ -73,9 +91,17 @@ class ViewController: UIViewController {
 
 You can use the Room.scn file provided in this repo, or create an empty SCNScene(), adding your own nodes to it. If you are adding a floor to your scene, you will need to play with the y-axis positioning so it matches the relative eye level. I found that -1.7 worked well.
 
+## Delegates
+
+I added a new delegate to the MixedRealityKit class called **mixedRealityDelegate** which allows you to optionally override the ARSCNViewDelegate methods in your ViewController as you normally would, passing them to the MixedRealityKit class.
+
+
 ## Options
 
 **disableSleepMode** - (default: _true_): When set to _true_ your device will not go turn off when idle. This can be overridden, but since your device will likely be in a Google Cardboard, you will not want it to go to sleep.
+
+The **runSession()** method takes the optional parameter **detectPlanes** (default: _false_). As of now, only horizontal plane detection is available out of the box.
+
 
 ## Author
 Scott Finkelstein [Twitter](https://twitter.com/sbf02)
