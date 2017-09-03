@@ -33,6 +33,7 @@ Change your ViewController class to look like the following
 ```swift
 import UIKit
 import SceneKit
+import ARKit
 import MixedRealityKit
 
 class ViewController: UIViewController, MixedRealityDelegate {
@@ -42,11 +43,10 @@ class ViewController: UIViewController, MixedRealityDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-
         sceneView=MixedRealityKit(frame: view.frame)
         sceneView?.mixedRealityDelegate = self
 
-        let scene=SCNScene(named: "art.scnassets/Room.scn")!
+        let scene=SCNScene()
         sceneView?.scene=scene
 
         view.addSubview(sceneView!)
@@ -54,7 +54,7 @@ class ViewController: UIViewController, MixedRealityDelegate {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        sceneView?.runSession(detectPlanes: true)
+        sceneView?.runSession()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -67,7 +67,7 @@ class ViewController: UIViewController, MixedRealityDelegate {
         // Dispose of any resources that can be recreated.
     }
 
-    // MixedReality Delegates
+    // MixedRealityKitDelegate Methods
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
 
     }
@@ -84,6 +84,7 @@ class ViewController: UIViewController, MixedRealityDelegate {
 
     }
 
+
 }
 
 
@@ -93,7 +94,7 @@ You can use the Room.scn file provided in this repo, or create an empty SCNScene
 
 ## Delegates
 
-I added a new delegate to the MixedRealityKit class called **mixedRealityDelegate** which allows you to optionally override the ARSCNViewDelegate methods in your ViewController as you normally would, passing them to the MixedRealityKit class.
+I added a new delegate to the MixedRealityKit class called **mixedRealityDelegate** which allows you to optionally override the ARSCNViewDelegate methods in your ViewController as you normally would, passing them to the MixedRealityKit class. While you don't need to override these delegates, you will need to implement them in your ViewController. The Error Message "Fix" button will do this for you if you are lazy :) I'm hoping to fix this requirement in a future release.
 
 
 ## Options
