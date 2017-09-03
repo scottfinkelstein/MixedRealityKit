@@ -71,6 +71,6 @@ You can use the Room.scn file provided in this repo, or create an empty SCNScene
 **disableSleepMode** - (default: _true_): When set to _true_ your device will not go turn off when idle. This can be overridden, but since your device will likely be in a Google Cardboard, you will not want it to go to sleep.
 
 ## Author
-Scott Finkelstein [@sbf02](https://twitter.com/sbf02)
+Scott Finkelstein [Twitter](https://twitter.com/sbf02)
 
 Available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
