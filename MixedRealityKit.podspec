@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 	s.name = 'MixedRealityKit'
-	s.version = '0.1.3'
+	s.version = '0.1.4'
 	s.summary = 'Easily add a stereoscopic ARKit SceneView to your project.'
 	s.description = <<-DESC
 The MixedRealityKit class extends ARSCNView and splits camera in two stereoscopic SceneViews. Works with Google Cardboard or any VR Viewer that supports non-barrel distorted VR.
