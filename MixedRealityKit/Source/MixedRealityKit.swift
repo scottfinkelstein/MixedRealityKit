@@ -10,7 +10,7 @@ import UIKit
 import SceneKit
 import ARKit
 
-class MixedRealityKit: ARSCNView, ARSessionDelegate, ARSCNViewDelegate {
+public class MixedRealityKit: ARSCNView, ARSessionDelegate, ARSCNViewDelegate {
     
     private var cameraTransform:matrix_float4x4?
     private var cameraNode:SCNNode?
@@ -30,7 +30,7 @@ class MixedRealityKit: ARSCNView, ARSessionDelegate, ARSCNViewDelegate {
         }
     }
     
-    override var scene: SCNScene {
+    override public var scene: SCNScene {
         didSet {
             setupMainCamera()
             stereoSplit()
@@ -101,28 +101,28 @@ class MixedRealityKit: ARSCNView, ARSessionDelegate, ARSCNViewDelegate {
         self.addSubview(sceneViewRight)
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     // Session Delegate
     
-    func session(_ session: ARSession, didUpdate frame: ARFrame) {
+    public func session(_ session: ARSession, didUpdate frame: ARFrame) {
         cameraTransform=frame.camera.transform
         cameraNode?.transform=SCNMatrix4(cameraTransform!)
     }
     
-    func session(_ session: ARSession, didFailWithError error: Error) {
+    public func session(_ session: ARSession, didFailWithError error: Error) {
         // Present an error message to the user
         
     }
     
-    func sessionWasInterrupted(_ session: ARSession) {
+    public func sessionWasInterrupted(_ session: ARSession) {
         // Inform the user that the session has been interrupted, for example, by presenting an overlay
         
     }
     
-    func sessionInterruptionEnded(_ session: ARSession) {
+    public func sessionInterruptionEnded(_ session: ARSession) {
         // Reset tracking and/or remove existing anchors if consistent tracking is required
         
     }
