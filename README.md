@@ -4,7 +4,7 @@ An easy way to add a stereoscopic ARKit SceneView to your project.
 
 The MixedRealityView class extends ARSCNView and splits camera in two stereoscopic SceneViews. Works with Google Cardboard or any VR Viewer that supports non-barrel distorted VR.
 
-**Virtual Reality Demo (encolsed room scene)**
+**Virtual Reality Demo (enclosed room scene)**
 ![Virtual Reality Example](demo1.gif)
 
 
