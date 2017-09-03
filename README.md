@@ -7,6 +7,9 @@ The MixedRealityView class extends ARSCNView and splits camera in two stereoscop
 **Virtual Reality Demo (enclosed room scene)**
 ![Virtual Reality Example](demo1.gif)
 
+**Mixed Reality Demo (viewing virtual objects in the real world)**
+![Virtual Reality Example](demo2.gif)
+
 
 
 ## Setting up a new Project to use MixedRealityKit
