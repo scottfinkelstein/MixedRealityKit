@@ -4,8 +4,13 @@ An easy way to add a stereoscopic ARKit SceneView to your project.
 
 The MixedRealityView class extends ARSCNView and splits camera in two stereoscopic SceneViews. Works with Google Cardboard or any VR Viewer that supports non-barrel distorted VR.
 
-CocoaPod coming soon. In the meantime clone this project and either copy the MRKitView.swift file into your project or work off of the cloned XCode project.
+You can easily add MixedRealityKit to your project by adding the following to your Podfile:
 
+'''
+pod 'MixedRealityKit'
+'''
+
+And running  **pod install**
 
 ## Setting up a new Project to use MixedRealityKit
 
