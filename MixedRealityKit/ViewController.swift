@@ -58,6 +58,10 @@ class ViewController: UIViewController, MixedRealityDelegate {
     func renderer(_ renderer: SCNSceneRenderer, didRemove node: SCNNode, for anchor: ARAnchor) {
         
     }
+    
+    func session(_ session: ARSession, didUpdate frame: ARFrame) {
+        
+    }
 
 }
 

@@ -15,6 +15,12 @@ public protocol MixedRealityDelegate: class {
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor)
     func renderer(_ renderer: SCNSceneRenderer, willUpdate node: SCNNode, for anchor: ARAnchor)
     func renderer(_ renderer: SCNSceneRenderer, didRemove node: SCNNode, for anchor: ARAnchor)
+    
+    func session(_ session: ARSession, didUpdate frame: ARFrame)
+    func session(_ session: ARSession, didFailWithError error: Error)
+    func sessionWasInterrupted(_ session: ARSession)
+    func sessionInterruptionEnded(_ session: ARSession)
+    
 }
 
 extension MixedRealityDelegate {
@@ -22,6 +28,11 @@ extension MixedRealityDelegate {
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) { }
     func renderer(_ renderer: SCNSceneRenderer, willUpdate node: SCNNode, for anchor: ARAnchor) { }
     func renderer(_ renderer: SCNSceneRenderer, didRemove node: SCNNode, for anchor: ARAnchor) { }
+    
+    func session(_ session: ARSession, didUpdate frame: ARFrame) { }
+    func session(_ session: ARSession, didFailWithError error: Error) { }
+    func sessionWasInterrupted(_ session: ARSession) { }
+    func sessionInterruptionEnded(_ session: ARSession) { }
 }
 
 public class MixedRealityKit: ARSCNView, ARSessionDelegate, ARSCNViewDelegate {
@@ -132,21 +143,31 @@ public class MixedRealityKit: ARSCNView, ARSessionDelegate, ARSCNViewDelegate {
     public func session(_ session: ARSession, didUpdate frame: ARFrame) {
         cameraTransform=frame.camera.transform
         cameraNode?.transform=SCNMatrix4(cameraTransform!)
+        
+        guard let mixedRealityDelegate = mixedRealityDelegate else { return }
+        mixedRealityDelegate.session(session, didUpdate: frame)
     }
     
     public func session(_ session: ARSession, didFailWithError error: Error) {
         // Present an error message to the user
+        
+        guard let mixedRealityDelegate = mixedRealityDelegate else { return }
+        mixedRealityDelegate.session(session, didFailWithError: error)
         
     }
     
     public func sessionWasInterrupted(_ session: ARSession) {
         // Inform the user that the session has been interrupted, for example, by presenting an overlay
         
+        guard let mixedRealityDelegate = mixedRealityDelegate else { return }
+        mixedRealityDelegate.sessionWasInterrupted(session)
     }
     
     public func sessionInterruptionEnded(_ session: ARSession) {
         // Reset tracking and/or remove existing anchors if consistent tracking is required
         
+        guard let mixedRealityDelegate = mixedRealityDelegate else { return }
+        mixedRealityDelegate.sessionInterruptionEnded(session)
     }
     
 
