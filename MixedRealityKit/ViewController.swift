@@ -42,9 +42,9 @@ class ViewController: UIViewController, MixedRealityDelegate {
         // Dispose of any resources that can be recreated.
     }
 
-    // MixedReality Delegates
+    // MixedRealityDelegate Methods - These are passed from ARSCNViewDelegate and ARSCNSessionDelegate by way of the MixedRealityDelegate, allowing you to subscribe only to MixedRealityDelegate
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
-       
+        
     }
     
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
@@ -60,6 +60,18 @@ class ViewController: UIViewController, MixedRealityDelegate {
     }
     
     func session(_ session: ARSession, didUpdate frame: ARFrame) {
+        
+    }
+    
+    func session(_ session: ARSession, didFailWithError error: Error) {
+        
+    }
+    
+    func sessionWasInterrupted(_ session: ARSession) {
+        
+    }
+    
+    func sessionInterruptionEnded(_ session: ARSession) {
         
     }
 
